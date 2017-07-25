@@ -3,21 +3,21 @@
 
 <head>
   <meta charset="utf-8">
-  <script type="text/javascript" src="./lib/jquery.1.10.2.min.js"></script>
   <link rel="stylesheet" type="text/css" href="index.css">
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+  	var socket = io();
+  </script>
+
+  <!-- jQuery UI -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 </head>
 
 <body>
-  <!-- jQuery UI -->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script type="text/javascript" src="./lib/jquery.ui.core.1.10.3.min.js"></script>
-  <script type="text/javascript" src="./lib/jquery.ui.widget.1.10.3.min.js"></script>
-  <script type="text/javascript" src="./lib/jquery.ui.mouse.1.10.3.min.js"></script>
-  <script type="text/javascript" src="./lib/jquery.ui.draggable.1.10.3.min.js"></script>
-  
-	<div class="w3-container w3-teal">
-	  <h1>Drones 4 Good</h1>
-	</div>
+  <div class="w3-container w3-teal">
+	<h1>Drones 4 Good</h1>
+  </div>
 	
 	<!-- Sidebar -->
 	<div>
