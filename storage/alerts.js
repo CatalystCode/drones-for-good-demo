@@ -1,5 +1,7 @@
 const azure = require('azure-storage');
 
+var base64regex = /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
+
 /**
  * Checking if there are items inside a queue
  * @param {string} queueName Name of the queue to query
@@ -19,8 +21,16 @@ function checkQueueMessages(queueName, accountName, accountKey, callback) {
         if(error) { return callback(error); }
     
         queueService.getMessage(queueName, null, (error, message) => {
+
+          // Removing message from queue
           if (message) {
             queueService.deleteMessage(queueName, message.messageId, message.popReceipt, () => {});
+
+            // Decoding a base64 message
+            if (message.messageText && base64regex.test(message.messageText)) {
+              let decoder = new azure.QueueMessageEncoder.TextBase64QueueMessageEncoder();
+              message.messageText = decoder.decode(message.messageText);
+            }
           }
 
           return callback(error, message);

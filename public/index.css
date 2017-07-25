@@ -7,6 +7,7 @@
 }
 
 #alerts #alert-count { 
+  float: left;
   cursor: pointer; 
   background: cornflowerblue; 
   border-radius: 2px;
@@ -17,12 +18,29 @@
 }
 
 #alerts #alert-messages { 
-  display: none; 
-  float: right;
-  padding: 5px 20px;
-  height: 200px;
-  overflow-y: scroll;
+  display: block; 
+  float: left;
+  height: auto;
+  max-height: 500px;
+  width: 300px;
+  overflow-y: auto;
+  list-style-type: none;
+  padding: 6px;
+  margin: 0;
+  border: 1px solid lightblue;
 }
+
+  #alerts #alert-messages .remove { 
+    cursor: pointer;
+    float: right;
+  }
+  
+  #alerts #alert-messages img { 
+    max-width: 100px;
+    max-height: 100px;
+    margin-right: 10px;
+  }
+
 
 /*========*/
 /* Alerts */

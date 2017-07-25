@@ -18,13 +18,25 @@
 				$alertMessages = $('#alerts #alert-messages');
 
 				$alertCount.text(parseInt($alertCount.text()) + 1);
-				$alertMessages.append($('<li />').html(
-					'<span><b>ID</b> ' + msg.messageId + '</span>' +
-					'<br />' +
-					'<span><b>Time</b> ' + msg.insertionTime + '</span>' +
-					'<br />' +
-					'<span><b>Text</b> ' + msg.messageText + '</span>'
-				));
+
+				// checking images
+				var json = JSON.parse(msg.messageText);
+				var images = json.images || [ json.image ];
+				var $itemHtml = `<span class='remove'><img src="/images/ic_delete_forever_black_24px.svg" /></span>`;
+				$itemHtml += `<span><b>Time: </b>${json.time}</span><br />`;
+
+				images.map(function (imageUrl) {
+					$itemHtml += `<img src="${imageUrl}" />`;
+				});
+				$itemHtml += `<br/><span>${json.description}</span><hr />`;
+
+				var $newItem = $('<li />').html($itemHtml);
+				$newItem.find('.remove').click(function (obj) {
+					$alertCount.text(parseInt($alertCount.text()) - 1);
+					$(obj.currentTarget).parent('li').remove();
+				});
+
+				$alertMessages.append($newItem);
 			});
 		});
 
