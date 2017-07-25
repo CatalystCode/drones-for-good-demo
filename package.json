@@ -4,6 +4,7 @@
   "description": "",
   "dependencies": {
     "azure-storage": "^2.2.1",
+    "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "ffmpeg": "0.0.4",
     "fs": "0.0.1-security",

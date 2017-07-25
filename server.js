@@ -3,11 +3,24 @@ const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const alerts = require('./storage/alerts');
+const bodyParser = require('body-parser');
+const videoutil = require('./videoutils');
 
 app.use(express.static('public'));
-	
-app.post('/analyze', (req, res) => {
-    //var dataInput = [req.body.filename];
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+  
+// Polling 
+const config = {
+  queueName: 'alerts', 
+  accountName: 'drones4goodstore', 
+  accountKey: '8aK9lKtBoyV++Af371a56aQPzh4gPGMT+8c5NQ/n9AfOAEFLPIb4BrOENxRo+MgOeHpTQLyP73mGzmBbyo9x9A=='
+}
+
+app.post('/analyze', function(req, res) {
+    var filePath = [req.body.filename];
+    videoutil.processFile(filePath, config.accountName, config.accountKey);
+    console.log('Video ' + filePath + ' is being processed')
 });
 
 io.on('connection', socket => {
@@ -22,12 +35,7 @@ io.on('connection', socket => {
   });
 });
 
-// Polling 
-const config = {
-  queueName: 'alerts', 
-  accountName: 'drones4goodstore', 
-  accountKey: '8aK9lKtBoyV++Af371a56aQPzh4gPGMT+8c5NQ/n9AfOAEFLPIb4BrOENxRo+MgOeHpTQLyP73mGzmBbyo9x9A=='
-}
+
 
 alerts.pollQueue(config.queueName, config.accountName, config.accountKey, 1000, message => {
   io.emit('new alert', message);

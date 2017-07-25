@@ -64,30 +64,30 @@
 
 	<!-- Sidebar -->
 	<div>
-		<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%">
-			<h3 class="w3-bar-item">Video Samples</h3>
-
-			<article class="video">
-				<figure>
-					<a target="iframe-name" class="thumbnails" href="https://www.youtube.com/embed/XGSy3_Czz8k" onclick="setval('1');"><img width="300" height="200" class="videoThumb" src="https://www.edgarsnyder.com/images/large-550/car-accident/products/child-car-seat.jpg "></a>
-				</figure>
-			</article>
-			<br/> <br/> <br/>
-
-			<article class="video">
-				<figure>
-					<a target="iframe-name" class="thumbnails" href="https://www.youtube.com/embed/y9eWoBKsVJ4?rel=0" onclick="setval('2');"><img width="300" height="200" class="videoThumb" src="https://www.hanseninjurylawfirm.com/wp-content/uploads/2016/08/1423175175298.jpg "></a>
-				</figure>
-			</article>
-			<br/> <br/> <br/>
-
-			<article class="video">
-				<figure>
-					<a target="iframe-name" class="thumbnails" href="https://www.youtube.com/embed/VEpMj-tqixs?rel=0" onclick="setval('3');"><img width="300" height="200" class="videoThumb" src="http://www.nrg.co.il/images/archive/300x225/1/380/403.jpg"></a>
-				</figure>
-			</article>
-			<br/> <br/> <br/>
-		</div>
+	<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%">
+		<h3 class="w3-bar-item">Video Samples</h3>
+  
+		<article class="video">
+		<figure>
+			<a target="iframe-name" class ="thumbnails" href="https://www.youtube.com/embed/GsQatKAtjoE?rel=0" onclick="setval('1');"><img width="300" height="200" class="videoThumb" src="pictures\noa.png"></a>
+		</figure>
+		</article>
+		<br/> <br/> <br/>
+		
+		<article class="video">
+		<figure>
+			<a target="iframe-name" class="thumbnails" href="https://www.youtube.com/embed/-w6--uNEKIQ?rel=0" onclick="setval('2');" ><img width="300" height="200" class="videoThumb" src="pictures\empty.png"></a>
+		</figure>
+		</article>
+		<br/> <br/> <br/>
+		
+		<article class="video">
+		<figure>
+			<a target="iframe-name" class="thumbnails" href="https://www.youtube.com/embed/6ABIgSTw3hU?rel=0" onclick="setval('3');"><img width="300" height="200" class="videoThumb" src="pictures\plant.png"></a>
+		</figure>
+		</article>
+		<br/> <br/> <br/>
+	</div>
 	</div>
 
 	<div id="descriptionParagraph" class="container" style=" width: '60%'">
@@ -114,7 +114,7 @@
 				alert("Please choose a video to analyze");
 			}
 			else {
-				var file = "public\\video\\movie" + globalval + ".mp4";
+				var file = ".\\public\\video\\movie" + globalval + ".mp4";
 
 				$.ajax({
 					url: '/analyze/',
