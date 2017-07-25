@@ -18,7 +18,7 @@ const config = {
 }
 
 app.post('/analyze', function(req, res) {
-    var filePath = [req.body.filename];
+    var filePath = req.body.filename;
     videoutil.processFile(filePath, config.accountName, config.accountKey);
     console.log('Video ' + filePath + ' is being processed')
 });
