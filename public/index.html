@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <script type="text/javascript" src="./lib/jquery.1.10.2.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body>
+  <!-- jQuery UI -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript" src="./lib/jquery.ui.core.1.10.3.min.js"></script>
+  <script type="text/javascript" src="./lib/jquery.ui.widget.1.10.3.min.js"></script>
+  <script type="text/javascript" src="./lib/jquery.ui.mouse.1.10.3.min.js"></script>
+  <script type="text/javascript" src="./lib/jquery.ui.draggable.1.10.3.min.js"></script>
+  
+	<div class="w3-container w3-teal">
+	  <h1>Drones 4 Good</h1>
+	</div>
+	
+	<!-- Sidebar -->
+	<div>
+	<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%">
+		<h3 class="w3-bar-item">Video Samples</h3>
+  
+		<article class="video">
+		<figure>
+			<a target="iframe-name" class ="thumbnails" href="https://www.youtube.com/embed/XGSy3_Czz8k" onclick="setval('1');"><img width="300" height="200" class="videoThumb" src="https://www.edgarsnyder.com/images/large-550/car-accident/products/child-car-seat.jpg "></a>
+		</figure>
+		</article>
+		<br/> <br/> <br/>
+		
+		<article class="video">
+		<figure>
+			<a target="iframe-name" class="thumbnails" href="https://www.youtube.com/embed/y9eWoBKsVJ4?rel=0" onclick="setval('2');" ><img width="300" height="200" class="videoThumb" src="https://www.hanseninjurylawfirm.com/wp-content/uploads/2016/08/1423175175298.jpg "></a>
+		</figure>
+		</article>
+		<br/> <br/> <br/>
+		
+		<article class="video">
+		<figure>
+			<a target="iframe-name" class="thumbnails" href="https://www.youtube.com/embed/VEpMj-tqixs?rel=0" onclick="setval('3');"><img width="300" height="200" class="videoThumb" src="http://www.nrg.co.il/images/archive/300x225/1/380/403.jpg"></a>
+		</figure>
+		</article>
+		<br/> <br/> <br/>
+	</div>
+	</div>
+	
+    <div id="descriptionParagraph" class="container" style=" width: '60%'">
+		<p> This web application demonstrate how to identify forgotten children in a car.
+			<br/><br/><b>How to use:</b> Choose a video you would like the app to analyze and click recognize button. 
+		</p>
+			
+		<iframe id="mainScreen" name="iframe-name" class="embed-responsive-item" width="760" height="515" allowfullscreen></iframe>	
+
+		<p>
+		<button type="button" onclick="sendImage()">Analyze</button>
+		</p>
+	</div>
+	
+	<script type="text/javascript">
+	var globalval = 'none';
+	
+	function setval(val) {
+		globalval = val;
+	}
+	
+	function sendImage() {
+	if (globalval == 'none') {
+		alert("Please choose a video to analyze");
+	}
+	else {
+		var file = "public\\video\\movie" + globalval + ".mp4";
+			
+			$.ajax({
+				url: '/analyze/',
+				type: 'POST',
+				contentType: 'application/json',
+				data: JSON.stringify({ filename: file }),
+				success: function (resp) {
+				}
+			  });
+		}
+	}
+	</script>
+</body>
+
+
+
+
+</html>
