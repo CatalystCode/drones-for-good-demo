@@ -1,6 +1,14 @@
 /* Alerts */
 /*========*/
 
+#body {
+  font-family : Georgia, Times, serif;
+  color:purple;
+  background-color:#d8da3d
+}
+  
+#h1{font-family:Helvetica, Arial}
+
 #alerts {
   width: 20%;
   float: right;
@@ -83,13 +91,11 @@
 .w3-bar .w3-bar-item{padding:8px 16px;float:center;width:auto;border:none;outline:none;display:block}
 .w3-bar .w3-dropdown-hover,.w3-bar .w3-dropdown-click{position:static;float:left}
 .w3-bar .w3-button{white-space:normal}
-.w3-bar-block .w3-bar-item{width:100%;display:block;padding:8px 16px;text-align:left;border:none;outline:none;white-space:normal;float:none}
+.w3-bar-block .w3-bar-item{width:100%;display:block;padding:8px 16px;text-align:left;border:none;outline:none;white-space:normal;float:none;font-family : Georgia, Times, serif;}
 .w3-bar-block.w3-center .w3-bar-item{text-align:center}.w3-block{display:block;width:100%}
 .w3-hide-small{display:none!important}.w3-mobile{display:block;width:100%!important}.w3-bar-item.w3-mobile,.w3-dropdown-hover.w3-mobile,.w3-dropdown-click.w3-mobile{text-align:center}
-.w3-bar .w3-bar-item{padding:8px 16px;float:left;width:auto;border:none;outline:none;display:block}
 .w3-bar .w3-dropdown-hover,.w3-bar .w3-dropdown-click{position:static;float:left}
 .w3-bar .w3-button{white-space:normal}
-.w3-bar-block .w3-bar-item{width:100%;display:block;padding:8px 16px;text-align:left;border:none;outline:none;white-space:normal;float:none}
-.w3-bar-block.w3-center .w3-bar-item{text-align:center}.w3-block{display:block;width:100%}
-.w3-container,.w3-panel{padding:0.01em 16px}.w3-panel{margin-top:16px;margin-bottom:16px}
-.w3-teal,.w3-hover-teal:hover{color:#fff!important;background-color:#009688!important}
+.w3-container,.w3-panel{float:center;padding:0.01em 16px}.w3-panel{margin-top:16px;margin-bottom:16px;font-family : Georgia, Times, serif;}
+.w3-teal,.w3-hover-teal:hover{float:center;color:#fff!important;background-color:#009688!important;font-family : Georgia, Times, serif;}
+#descriptionParagraph{float:center;width:auto;border:none;outline:none;display:block;font-family : Georgia, Times, serif;}
