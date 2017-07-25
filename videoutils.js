@@ -21,7 +21,7 @@ processFile = (videoName, accountName, accountKey) => {
       var blobService = azure.createBlobService(accountName, accountKey);
       var queueService = azure.createQueueService(accountName, accountKey);
       blobService.createContainerIfNotExists(
-        'imagestoprocess', 
+        'image-processing-jobs', 
         { 
           publicAccessLevel: 'blob'
         }, 
@@ -33,7 +33,7 @@ processFile = (videoName, accountName, accountKey) => {
         
           console.log('have blob container');
           queueService.createQueueIfNotExists(
-            'imagestoprocess', 
+            'image-processing-jobs', 
             function(error, result, response) {
               if(error) {
                 console.log('failed creating queue');
@@ -62,10 +62,12 @@ deleteFile = (element) => {
 };
 
 handleFiles = (files, queueService, blobService) => {
+  var counter = 0;
+  var timeStamp = Math.floor(Date.now());
   files.forEach(function(element) {
     var fName = element.substr(element.indexOf('/') + 1);
     blobService.createBlockBlobFromLocalFile(
-      'imagestoprocess', 
+      'image-processing-jobs', 
       fName, 
       element, 
       function(error, result, response) {
@@ -75,9 +77,17 @@ handleFiles = (files, queueService, blobService) => {
         
         // file uploaded. now lets save the message into the queue and delete the file
         console.log('file saved into blob');
+        //fName
+        var obj = { url : 'https://drones4goodstore.blob.core.windows.net/image-processing-jobs/' + fName, timestamp: timeStamp, frame: counter};
+        var jsonMsg = JSON.stringify(obj);
+
+        // azure functions require base 64
+        jsonMsg = new Buffer(jsonMsg).toString("base64");
+        counter += 1;
+        console.log(jsonMsg);
         queueService.createMessage(
-          'imagestoprocess', 
-          fName, 
+          'image-processing-jobs', 
+          jsonMsg, 
           function(error) {
             // Queue created or exists
             if (error) {
@@ -85,6 +95,7 @@ handleFiles = (files, queueService, blobService) => {
             }
             
             console.log('sent msg');
+            
             deleteFile(element);
           });
       });
