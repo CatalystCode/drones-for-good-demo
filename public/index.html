@@ -98,7 +98,7 @@
 		<iframe id="mainScreen" border="5px" name="iframe-name" class="embed-responsive-item" width="760" height="515" allowfullscreen></iframe>
 
 		<p>
-			<button type="button" onclick="sendImage()">Analyze</button>
+			<button type="button" onclick="sendImage();">Analyze</button>
 		</p>
 	</div>
 
@@ -110,6 +110,7 @@
 		}
 
 		function sendImage() {
+			console.log('clicked...');
 			if (globalval == 'none') {
 				alert("Please choose a video to analyze");
 			}
