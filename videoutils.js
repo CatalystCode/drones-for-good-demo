@@ -8,8 +8,8 @@ processFile = (videoName, accountName, accountKey) => {
     // Callback mode
     video.fnExtractFrameToJPG('frames\\', {
       start_time: `0:00:01`,
-      //frame_rate : 1, // a frame per second
-      every_n_seconds: 1,
+      frame_rate : 1, // a frame per second
+      //every_n_seconds: 1,
       file_name : `frm_%t_%s`
     }, function (error, files) {
       if (error) {
