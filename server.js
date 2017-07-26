@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const app = express();
 const http = require('http').Server(app);
@@ -13,8 +15,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 // Polling 
 const config = {
   queueName: 'alerts', 
-  accountName: 'drones4goodstore', 
-  accountKey: '8aK9lKtBoyV++Af371a56aQPzh4gPGMT+8c5NQ/n9AfOAEFLPIb4BrOENxRo+MgOeHpTQLyP73mGzmBbyo9x9A=='
+  accountName: process.env.ACCOUNT_NAME, 
+  accountKey: process.env.ACCOUNT_KEY
 }
 
 app.post('/analyze', function(req, res) {

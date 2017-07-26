@@ -64,19 +64,6 @@ function pollQueue(queueName, accountName, accountKey, pollInternal, actionCallb
   }, pollInternal || 1000);
 }
 
-// checkQueueMessages('alerts', 'drones4goodstore', '8aK9lKtBoyV++Af371a56aQPzh4gPGMT+8c5NQ/n9AfOAEFLPIb4BrOENxRo+MgOeHpTQLyP73mGzmBbyo9x9A==', (error, message) => {
-  
-//   if (error) {
-//     return console.error(error);
-//   }
-
-//   if (!message) {
-//     return console.log('no messages in queue');
-//   }
-
-//   console.log(message);
-// });
-
 module.exports = {
   pollQueue,
   checkQueueMessages
