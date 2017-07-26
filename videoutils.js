@@ -93,10 +93,10 @@ handleFiles = (files, queueService, blobService) => {
           function(error) {
             // Queue created or exists
             if (error) {
-              console.log('error creating queue message:' + error);
+              console.log('error creating queue message (deleting anyway):' + error);
+            } else {
+              console.log('sent msg');  
             }
-            
-            console.log('sent msg');
             
             deleteFile(element);
           });
