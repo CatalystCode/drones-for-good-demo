@@ -74,6 +74,7 @@ handleFiles = (files, queueService, blobService) => {
       function(error, result, response) {
         if (error) {
             console.log('error creating blob item:' + error);
+            return;
         }
         
         // file uploaded. now lets save the message into the queue and delete the file
