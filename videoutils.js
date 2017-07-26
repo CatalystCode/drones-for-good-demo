@@ -10,7 +10,7 @@ processFile = (videoName, accountName, accountKey) => {
       start_time: `0:00:01`,
       frame_rate : 1, // a frame per second
       //every_n_seconds: 1,
-      file_name : `frm_%t_%s`
+      file_name : videoName + `_%t_%s`
     }, function (error, files) {
       if (error) {
         console.log('failed extracting frames:' + error);
